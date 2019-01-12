@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>贫困户产业发展管理</title>
+	<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <div class="form-group col-sm-2">
+                <input type="text" class="form-control" v-model="q.companyName" @keyup.enter="query" placeholder="户编号">
+            </div>
+            <a class="btn btn-default" @click="query">查询</a>
+            <#if shiro.hasPermission("company:save")>
+                <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+            </#if>
+            <#if shiro.hasPermission("company:update")>
+                <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+            </#if>
+            <#if shiro.hasPermission("company:delete")>
+                <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+            </#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-2 control-label">公司名称</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="vo.companyName" placeholder="户编号"/>
+                </div>
+            </div>
+             <div class="form-group">
+                <div class="col-sm-2 control-label">三品一标(商标)</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="vo.bands" placeholder=">三品一标(商标)"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">产业类别</div>
+                <div class="col-sm-40">
+                    <select name="" id="" v-model="vo.industryNo">
+                        <option value="">请选择</option>
+                        <option value="chanye_tszhy">特色种植业</option>
+                        <option value="chanye_jkyzy">健康养殖业</option>
+                        <option value="chanye_xxny">休闲农业与乡村旅游业</option>
+                        <option value="chanye_dsll">电商冷链物流业</option>
+                        <option value="chanye_nyfwy">农业生产服务业</option>
+                        <option value="chanye_ncgg">农村公共服务业</option>
+                        <option value="chanye_fpcj">"扶贫车间"式加工业</option>
+                        <option value="chanye_qt">其他产业</option>
+                    </select>
+                 
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">所在市</div>
+                <div class="col-sm-40">
+                    <select name="" id="" v-model="vo.shiCode">
+                        <option value="">请选择</option>
+                        <option value="4301">长沙</option>
+                        <option value="4302">衡阳</option>
+                        <option value="4303">株洲</option>
+                        <option value="4304">湘潭</option>
+                        <option value="4305">岳阳</option>
+                         <option value="4306">益阳 </option>
+                          <option value="4307">常德 </option>
+                          <option value="4308">张家界</option>
+                          <option value="4309">怀化</option>
+                           <option value="4310">邵阳</option>
+                           <option value="4311">郴州</option>
+                           <option value="4312">永州 </option>
+                           <option value="4313">娄底  </option>
+                            <option value="4314">吉首（湘西州）  </option>
+                       
+                    </select>
+                  
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">公司地址</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="vo.address" placeholder="公司地址"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">联系人电话</div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" v-model="vo.contactsPhone" placeholder="contacts_phone"/>
+                </div>
+            </div>
+              <div class="form-group">
+                <div class="col-sm-2 control-label">是否龙头企业</div>
+                <div class="col-sm-40">
+                    <select name="" id="" v-model="vo.isHeadCompany">
+                        <option value="">请选择</option>
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                       
+                    </select>
+                  
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/bus/company.js?_${.now?long}"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<form method="post" enctype="multipart/form-data" id="form" action="/upload">
+    <input type="file" name="filename"/>
+    <input type="submit" value="提交上传"/>
+</form>
+<hr>
+
+<div>
+    <!-- <img alt="这是图片" src="/img/001.png"/> -->
+    <img alt="验证码" onclick = "this.src='/defaultKaptcha?d='+new Date()*1" src="/defaultKaptcha" />
+</div>
+<form action="imgvrifyControllerDefaultKaptcha">
+    <input type="text" name="vrifyCode" />
+    <input type="submit" value="提交"></input>
+</form>
+<dev id="testvue">
+    <p>name:{{name}}}</p>
+    <p>age:{{age}}}</p>
+    <p>att:{{att}</p>
+</dev>
+<script type="text/javascript" src="/jquery.min.js"></script>
+<script type="text/javascript" src="/jquery.ocupload-1.1.2.js"></script>
+<script type="text/javascript" src="/statics/libs/vue.min.js"></script>
+<script type="text/javascript">
+    var vm=new Vue({
+        el:"#testvue",
+        data:{
+            name:'德玛西亚',
+            age:'18',
+            att:'德玛西亚之力'
+
+        }
+    })
+</script>
+</body>
+
+</html>
