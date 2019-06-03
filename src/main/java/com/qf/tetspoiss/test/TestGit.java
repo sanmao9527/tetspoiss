@@ -7,5 +7,5 @@ package com.qf.tetspoiss.test;
  * @create: 2019-06-03 14:05
  **/
 public class TestGit {
-  private String name；
+  private String name;
 }
