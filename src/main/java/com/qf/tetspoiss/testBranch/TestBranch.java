@@ -8,5 +8,5 @@ package com.qf.tetspoiss.testBranch;
  **/
 public class TestBranch {
 
-    private String  TestBranch;
+    private String  TestBranchss;
 }
